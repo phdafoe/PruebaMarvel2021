@@ -16,12 +16,12 @@ class HomeTabBarViewController: UITabBarController {
         let twoViewController = ListComicsAssembly.buildNavigation()
 
         let customOneTabBarItem = UITabBarItem(title: "Characters",
-                                               image: UIImage(named: "reloj")?.withRenderingMode(.alwaysOriginal),
-                                               selectedImage: UIImage(named: "reloj"))
+                                               image: UIImage(named: "top-icon")?.withRenderingMode(.alwaysOriginal),
+                                               selectedImage: UIImage(named: "top-icon"))
         
         let customTwoTabBarItem = UITabBarItem(title: "Comics",
-                                               image: UIImage(named: "reloj")?.withRenderingMode(.alwaysOriginal),
-                                               selectedImage: UIImage(named: "reloj"))
+                                               image: UIImage(named: "ver-icon")?.withRenderingMode(.alwaysOriginal),
+                                               selectedImage: UIImage(named: "ver-icon"))
         
         oneViewController.tabBarItem = customOneTabBarItem
         twoViewController.tabBarItem = customTwoTabBarItem

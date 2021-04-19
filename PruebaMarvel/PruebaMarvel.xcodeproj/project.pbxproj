@@ -55,6 +55,7 @@
 		B4F61ABA262DE49F008AD8B0 /* SeriesCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B4F61AAD262DE49F008AD8B0 /* SeriesCollectionViewCell.xib */; };
 		B4F61ABB262DE49F008AD8B0 /* ComicsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B4F61AAF262DE49F008AD8B0 /* ComicsTableViewCell.xib */; };
 		B4F61ABC262DE49F008AD8B0 /* ComicsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4F61AB0262DE49F008AD8B0 /* ComicsTableViewCell.swift */; };
+		B4F61AC9262E0367008AD8B0 /* ListComicsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4F61AC8262E0367008AD8B0 /* ListComicsProvider.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -110,6 +111,7 @@
 		B4F61AAD262DE49F008AD8B0 /* SeriesCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SeriesCollectionViewCell.xib; sourceTree = "<group>"; };
 		B4F61AAF262DE49F008AD8B0 /* ComicsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ComicsTableViewCell.xib; sourceTree = "<group>"; };
 		B4F61AB0262DE49F008AD8B0 /* ComicsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComicsTableViewCell.swift; sourceTree = "<group>"; };
+		B4F61AC8262E0367008AD8B0 /* ListComicsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListComicsProvider.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -243,6 +245,7 @@
 				B447AD2A262D7D90002413E6 /* ListComicsViewController.swift */,
 				B447AD2B262D7D90002413E6 /* ListComicsViewController.xib */,
 				B447AD2C262D7D90002413E6 /* ListComicsRouter.swift */,
+				B4F61AC8262E0367008AD8B0 /* ListComicsProvider.swift */,
 			);
 			path = ListComicsVC;
 			sourceTree = "<group>";
@@ -457,6 +460,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B4F61AC9262E0367008AD8B0 /* ListComicsProvider.swift in Sources */,
 				B447AD3F262D7D90002413E6 /* ListComicsRouter.swift in Sources */,
 				B4F61A82262DD8EB008AD8B0 /* StoreManager.swift in Sources */,
 				B447AD40262D7D90002413E6 /* ListCharactersViewController.swift in Sources */,

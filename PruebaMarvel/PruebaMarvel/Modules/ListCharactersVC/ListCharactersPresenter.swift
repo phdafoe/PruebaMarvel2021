@@ -31,7 +31,8 @@ extension ListCharactersPresenter: ListCharactersPresenterProtocolOutput {
     internal func loadCharacters() {
         self.listCharacters = nil
         self.viewController?.showLoading(view: (self.viewController?.view)!, animated: true)
-        provider.fetchListCharacters { (result) in
+        provider.fetchListCharacters { [weak self] (result) in
+            guard let self = self else { return }
             if let resultDes = result {
                 self.listCharacters = resultDes.data?.results
                 self.viewController?.reloadData()
