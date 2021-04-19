@@ -20,8 +20,6 @@ class CharacterCollectionViewCell: UICollectionViewCell, ReuseIdentifierProtocol
     @IBOutlet weak var myPlaceHolder: UIImageView!
     @IBOutlet weak var myDegradado: UIImageView!
     
-    var imageLoader = ImageLoader()
-
     override func awakeFromNib() {
         super.awakeFromNib()
         self.setupView()

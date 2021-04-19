@@ -1,8 +1,8 @@
 //
 //  HeaderDetailCell.swift
-//  Marvel
+//  PruebaMarvel
 //
-//  Created by Andres Felipe Ocampo Eljaiek on 15/03/2021.
+//  Created by Andres Felipe Ocampo Eljaiek
 //
 
 import UIKit

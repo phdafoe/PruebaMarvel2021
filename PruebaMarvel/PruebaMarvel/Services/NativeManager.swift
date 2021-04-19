@@ -1,19 +1,17 @@
 //
 //  ServiceManager.swift
-//  Marvel
+//  PruebaMarvel
 //
 //  Created by Andres Felipe Ocampo Eljaiek
 //
 import Foundation
 
 protocol RequestManager {
-    var delegate: BaseProviderDelegate? { get set }
     func request<D: Decodable>(_ customRequest: CustomRequest, type: D.Type, success: @escaping (D) -> Void, failure: @escaping (CustomErrorModel) -> Void) -> URLSessionTask?
 }
 
 class NativeManager: RequestManager {
 	
-	weak var delegate: BaseProviderDelegate?
 
 	var requestHttpHeaders = RestEntity()
 	var urlQueryParameters = RestEntity()
@@ -48,17 +46,15 @@ class NativeManager: RequestManager {
 			return nil
 		}
 
-		delegate?.requestDone(customRequest: customRequest)
 
 		let sessionConfiguration = URLSessionConfiguration.default
 		let session = URLSession(configuration: sessionConfiguration)
         BaseProviderUtils.printRequest(customRequest)
 		let task = session.dataTask(with: request) { data, response, error in
             if error == nil {
-                self.delegate?.responseGet(customRequest: customRequest)
                 if let httpResponse = response as? HTTPURLResponse {
                     if (200 ..< 300).contains(httpResponse.statusCode){
-                        if let dataDes = data{
+                        if let dataDes = data {
                             do {
                                 let decodeResponse = try Utils.BaseURL().jsonDecoder.decode(D.self, from: dataDes)
                                 DispatchQueue.main.async {
@@ -66,6 +62,7 @@ class NativeManager: RequestManager {
                                     success(decodeResponse)
                                 }
                             } catch {
+                                BaseProviderUtils.printFailureResponse(endpoint: customRequest.fullEndpoint, data: dataDes, decryptedBytes: nil, printData: true)
                                 failure(CustomErrorModel(httpClientError: .notFound, backendError: .unknownError))
                             }
                         }

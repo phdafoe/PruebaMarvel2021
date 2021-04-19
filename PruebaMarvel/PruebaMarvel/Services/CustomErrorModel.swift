@@ -1,6 +1,6 @@
 //
-//  ServiceManager.swift
-//  Marvel
+//  CustomErrorModel.swift
+//  PruebaMarvel
 //
 //  Created by Andres Felipe Ocampo Eljaiek
 //
@@ -69,7 +69,7 @@ class CustomErrorModel: NSError {
 		let defaultDomain = "error_generic_description"
 		let defaultCode = httpClientError.type.rawValue
 
-		guard let data = data else {
+        guard data != nil else {
 			super.init(domain: defaultDomain, code: defaultCode, userInfo: nil)
 			return
 		}

@@ -35,8 +35,6 @@
 		B447AD4A262D7E2B002413E6 /* ListComicsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B447AD47262D7E2B002413E6 /* ListComicsCoordinator.swift */; };
 		B447AD4B262D7E2B002413E6 /* DetailCharacterCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B447AD48262D7E2B002413E6 /* DetailCharacterCoordinator.swift */; };
 		B447AD4F262D7E9B002413E6 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = B447AD4E262D7E9B002413E6 /* Utils.swift */; };
-		B4F61A81262DD8EB008AD8B0 /* ServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4F61A7F262DD8EB008AD8B0 /* ServiceManager.swift */; };
-		B4F61A82262DD8EB008AD8B0 /* StoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4F61A80262DD8EB008AD8B0 /* StoreManager.swift */; };
 		B4F61A8D262DDAE2008AD8B0 /* CustomRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4F61A8C262DDAE2008AD8B0 /* CustomRequest.swift */; };
 		B4F61A90262DDDA0008AD8B0 /* NativeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4F61A8F262DDDA0008AD8B0 /* NativeManager.swift */; };
 		B4F61A93262DDDB5008AD8B0 /* BaseProviderUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4F61A92262DDDB5008AD8B0 /* BaseProviderUtils.swift */; };
@@ -92,8 +90,6 @@
 		B447AD47262D7E2B002413E6 /* ListComicsCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListComicsCoordinator.swift; sourceTree = "<group>"; };
 		B447AD48262D7E2B002413E6 /* DetailCharacterCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailCharacterCoordinator.swift; sourceTree = "<group>"; };
 		B447AD4E262D7E9B002413E6 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
-		B4F61A7F262DD8EB008AD8B0 /* ServiceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceManager.swift; sourceTree = "<group>"; };
-		B4F61A80262DD8EB008AD8B0 /* StoreManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreManager.swift; sourceTree = "<group>"; };
 		B4F61A8C262DDAE2008AD8B0 /* CustomRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomRequest.swift; sourceTree = "<group>"; };
 		B4F61A8F262DDDA0008AD8B0 /* NativeManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NativeManager.swift; sourceTree = "<group>"; };
 		B4F61A92262DDDB5008AD8B0 /* BaseProviderUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseProviderUtils.swift; sourceTree = "<group>"; };
@@ -291,8 +287,6 @@
 				B4F61A92262DDDB5008AD8B0 /* BaseProviderUtils.swift */,
 				B4F61A8F262DDDA0008AD8B0 /* NativeManager.swift */,
 				B4F61A8C262DDAE2008AD8B0 /* CustomRequest.swift */,
-				B4F61A7F262DD8EB008AD8B0 /* ServiceManager.swift */,
-				B4F61A80262DD8EB008AD8B0 /* StoreManager.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -465,7 +459,6 @@
 			files = (
 				B4F61AC9262E0367008AD8B0 /* ListComicsProvider.swift in Sources */,
 				B447AD3F262D7D90002413E6 /* ListComicsRouter.swift in Sources */,
-				B4F61A82262DD8EB008AD8B0 /* StoreManager.swift in Sources */,
 				B447AD40262D7D90002413E6 /* ListCharactersViewController.swift in Sources */,
 				B447AD41262D7D90002413E6 /* ListCharactersRouter.swift in Sources */,
 				B447AD3B262D7D90002413E6 /* HomeTabBarViewController.swift in Sources */,
@@ -482,7 +475,6 @@
 				B447AD18262D7D54002413E6 /* AppAssembly.swift in Sources */,
 				B447AD32262D7D90002413E6 /* DetailSeriesModel.swift in Sources */,
 				B447AD4B262D7E2B002413E6 /* DetailCharacterCoordinator.swift in Sources */,
-				B4F61A81262DD8EB008AD8B0 /* ServiceManager.swift in Sources */,
 				B4F61ACC262E0730008AD8B0 /* DetailCharacterProvider.swift in Sources */,
 				B4F61AB9262DE49F008AD8B0 /* CharacterCollectionViewCell.swift in Sources */,
 				B4F61A9C262DDFD1008AD8B0 /* Date+Extension.swift in Sources */,
