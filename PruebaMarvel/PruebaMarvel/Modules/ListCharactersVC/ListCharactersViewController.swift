@@ -36,17 +36,18 @@ extension ListCharactersViewController: ListCharactersViewPresenterInterface {
 
 extension ListCharactersViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
+
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if let cellsForRows = self.presenter?.getNumberOfRowCell() {
             return cellsForRows
         }
         return 0
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = self.myCollectionView.dequeueReusableCell(withReuseIdentifier: CharacterCollectionViewCell.defaultReuseIdentifier, for: indexPath) as! CharacterCollectionViewCell
         if let dataModel = self.presenter?.getModelDataCell(index: indexPath.row) {
@@ -54,16 +55,17 @@ extension ListCharactersViewController: UICollectionViewDelegate, UICollectionVi
         }
         return cell
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if let dataModel = self.presenter?.getModelDataCell(index: indexPath.row) {
             self.presenter?.showDetailCharacterFromView(data: dataModel)
         }
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return Helpers().showPostersInCollectionView(myCollectionView)
     }
+    
 }
 
 
