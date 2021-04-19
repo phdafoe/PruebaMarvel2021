@@ -57,14 +57,16 @@ class NativeManager: RequestManager {
                 self.delegate?.responseGet(customRequest: customRequest)
                 
                 if let httpResponse = response as? HTTPURLResponse {
-                    if let dataDes = data{
-                        do {
-                            let decodeResponse = try Utils.BaseURL().jsonDecoder.decode(D.self, from: dataDes)
-                            DispatchQueue.main.async {
-                                success(decodeResponse)
+                    if (200 ..< 300).contains(httpResponse.statusCode){
+                        if let dataDes = data{
+                            do {
+                                let decodeResponse = try Utils.BaseURL().jsonDecoder.decode(D.self, from: dataDes)
+                                DispatchQueue.main.async {
+                                    success(decodeResponse)
+                                }
+                            } catch {
+                                failure(CustomErrorModel(httpClientError: .notFound, backendError: .unknownError))
                             }
-                        } catch {
-                            failure(CustomErrorModel(httpClientError: .notFound, backendError: .unknownError))
                         }
                     }
                 }
