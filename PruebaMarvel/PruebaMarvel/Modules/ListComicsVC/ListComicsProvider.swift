@@ -16,7 +16,7 @@ class ListComicsProvider: NativeManager, ListComicsProviderProtocol {
     
     internal func fetchListComics(completionSuccess: @escaping (ListComicsModel?) -> (), failure: @escaping(CustomErrorModel?) -> ()) {
         
-        self.request(CustomRequest(method: .get,
+        _ = self.request(CustomRequest(method: .get,
                                    urlContext: .marvel,
                                    endpoint: URLEndpoint.comics,
                                    headers: ["Referer":"developer.marvel.com"],

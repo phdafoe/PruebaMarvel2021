@@ -56,6 +56,7 @@
 		B4F61ABB262DE49F008AD8B0 /* ComicsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B4F61AAF262DE49F008AD8B0 /* ComicsTableViewCell.xib */; };
 		B4F61ABC262DE49F008AD8B0 /* ComicsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4F61AB0262DE49F008AD8B0 /* ComicsTableViewCell.swift */; };
 		B4F61AC9262E0367008AD8B0 /* ListComicsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4F61AC8262E0367008AD8B0 /* ListComicsProvider.swift */; };
+		B4F61ACC262E0730008AD8B0 /* DetailCharacterProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4F61ACB262E0730008AD8B0 /* DetailCharacterProvider.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -112,6 +113,7 @@
 		B4F61AAF262DE49F008AD8B0 /* ComicsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ComicsTableViewCell.xib; sourceTree = "<group>"; };
 		B4F61AB0262DE49F008AD8B0 /* ComicsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComicsTableViewCell.swift; sourceTree = "<group>"; };
 		B4F61AC8262E0367008AD8B0 /* ListComicsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListComicsProvider.swift; sourceTree = "<group>"; };
+		B4F61ACB262E0730008AD8B0 /* DetailCharacterProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCharacterProvider.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -222,6 +224,7 @@
 			isa = PBXGroup;
 			children = (
 				B447AD21262D7D90002413E6 /* DetailCharacterPresenter.swift */,
+				B4F61ACB262E0730008AD8B0 /* DetailCharacterProvider.swift */,
 				B447AD22262D7D90002413E6 /* DetailCharacterRouter.swift */,
 				B447AD23262D7D90002413E6 /* DetailCharacterViewController.xib */,
 				B447AD24262D7D90002413E6 /* DetailCharacterViewController.swift */,
@@ -480,6 +483,7 @@
 				B447AD32262D7D90002413E6 /* DetailSeriesModel.swift in Sources */,
 				B447AD4B262D7E2B002413E6 /* DetailCharacterCoordinator.swift in Sources */,
 				B4F61A81262DD8EB008AD8B0 /* ServiceManager.swift in Sources */,
+				B4F61ACC262E0730008AD8B0 /* DetailCharacterProvider.swift in Sources */,
 				B4F61AB9262DE49F008AD8B0 /* CharacterCollectionViewCell.swift in Sources */,
 				B4F61A9C262DDFD1008AD8B0 /* Date+Extension.swift in Sources */,
 				B447AD3C262D7D90002413E6 /* ListComicsPresenter.swift in Sources */,

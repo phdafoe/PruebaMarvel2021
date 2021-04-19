@@ -16,7 +16,7 @@ class ListCharactersProvider: NativeManager, ListCharactersProviderProtocol {
     
     internal func fetchListCharacters(completionSuccess: @escaping (ListCharacteresModel?) -> (), failure: @escaping(CustomErrorModel?) -> ()) {
         
-        self.request(CustomRequest(method: .get,
+        _ = self.request(CustomRequest(method: .get,
                                    urlContext: .marvel,
                                    endpoint: URLEndpoint.characters,
                                    headers: ["Referer":"developer.marvel.com"],
