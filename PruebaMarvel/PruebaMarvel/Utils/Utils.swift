@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import SystemConfiguration
 
 class Utils {
     
@@ -29,6 +30,47 @@ class Utils {
         let baseAPIURL = "https://gateway.marvel.com/v1/public"
         let urlSession = URLSession.shared
         let jsonDecoder = Utils.jsonDecoder
+    }
+    
+    static func getHeadersFromContext(_ context: URLEndpoint.BaseURLContext) -> [String: String] {
+        switch context {
+        case .marvel:
+            return ["Referer": "developer.marvel.com"]
+        }
+    }
+    
+    struct RestEntity {
+        private var values: [String: Any] = [:]
+
+        mutating func add(value: Any, forKey key: String) {
+            values[key] = value
+        }
+
+        func value(forKey key: String) -> Any? {
+            return values[key]
+        }
+
+        func allValues() -> [String: Any] {
+            return values
+        }
+
+        func totalItems() -> Int {
+            return values.count
+        }
+    }
+    
+    static func print(_ items: Any..., separator: String = " ", terminator: String = "\n") {
+        #if DEBUG
+
+            var idx = items.startIndex
+            let endIdx = items.endIndex
+
+            repeat {
+                Swift.print(items[idx], separator: separator, terminator: idx == (endIdx - 1) ? terminator : separator)
+                idx += 1
+            } while idx < endIdx
+
+        #endif
     }
  
 }
@@ -54,6 +96,20 @@ class Helpers {
         let GRAY_NAV = #colorLiteral(red: 0.1921568627, green: 0.1921568627, blue: 0.1921568627, alpha: 1)
         let BLANCO_TEXTO_NAV = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         let RED_ICON = #colorLiteral(red: 0.8889052868, green: 0.1445426047, blue: 0.1411617994, alpha: 1)
+    }
+    
+    struct Constants {
+        static let jsonMIMEtype = "application/json"
+        static let pdfMIMEtype = "application/pdf"
+        static let jpegtype = "image/jpeg"
+        static let userTokenHeader = "userToken"
+        static let languageHeader = "X-lang"
+        static let flowTokenHeader = "token"
+        static let flowTypeHeader = "FlowType"
+        static let contentTypeHeader = "Content-Type"
+        static let dateFormat = "yyyy-MM-dd HH:mm:ss"
+        static let presentationDateFormat = "dd/MM/yyyy"
+        static let paqbookPresentationDateFormat = "dd MMM yyyy"
     }
 }
 
@@ -117,6 +173,77 @@ extension Date {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = format
         return dateFormatter.string(from: self)
+    }
+}
+
+
+
+extension NSObject {
+    
+    enum ReachabilityStatus {
+        case notReachable
+        case reachableViaWWAN
+        case reachableViaWiFi
+    }
+    
+    var currentReachabilityStatus: ReachabilityStatus {
+        
+        var zeroAddress = sockaddr_in()
+        zeroAddress.sin_len = UInt8(MemoryLayout<sockaddr_in>.size)
+        zeroAddress.sin_family = sa_family_t(AF_INET)
+        
+        guard let defaultRouteReachability = withUnsafePointer(to: &zeroAddress, {
+            $0.withMemoryRebound(to: sockaddr.self, capacity: 1) {
+                SCNetworkReachabilityCreateWithAddress(nil, $0)
+            }
+        }) else {
+            return .notReachable
+        }
+        
+        var flags: SCNetworkReachabilityFlags = []
+        if !SCNetworkReachabilityGetFlags(defaultRouteReachability, &flags) {
+            return .notReachable
+        }
+        
+        if flags.contains(.reachable) == false {
+            // The target host is not reachable.
+            return .notReachable
+        } else if flags.contains(.isWWAN) == true {
+            // WWAN connections are OK if the calling application is using the CFNetwork APIs.
+            return .reachableViaWWAN
+        } else if flags.contains(.connectionRequired) == false {
+            // If the target host is reachable and no connection is required then we'll assume that you're on Wi-Fi...
+            return .reachableViaWiFi
+        } else if (flags.contains(.connectionOnDemand) == true || flags.contains(.connectionOnTraffic) == true) && flags.contains(.interventionRequired) == false {
+            // The connection is on-demand (or on-traffic) if the calling application is using the CFSocketStream or higher APIs and no [user] intervention is needed
+            return .reachableViaWiFi
+        } else {
+            return .notReachable
+        }
+    }
+    
+}
+
+
+protocol BaseProviderParamsDTO: Codable {}
+
+extension BaseProviderParamsDTO {
+    func encode() -> [String: Any]? {
+        guard let jsonData = try? JSONEncoder().encode(self),
+            let json = try? JSONSerialization.jsonObject(with: jsonData, options: []) as? [String: Any]
+        else { return nil }
+
+        return json
+    }
+}
+
+extension Array where Element: BaseProviderParamsDTO {
+    func encode() -> [[String: Any]]? {
+        guard let jsonData = try? JSONEncoder().encode(self),
+            let json = try? JSONSerialization.jsonObject(with: jsonData, options: []) as? [[String: Any]]
+        else { return nil }
+
+        return json
     }
 }
 
