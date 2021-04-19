@@ -38,7 +38,7 @@ class SeriesCollectionViewCell: UICollectionViewCell, ReuseIdentifierProtocol, S
         guard let dataDes = data else { return }
         self.myCharacter?.text = dataDes.title
         self.myPlaceHolder.kf.setImage(with: ImageResource(downloadURL: (data?.thumbnail?.pathURL)!),
-                                       placeholder: UIImage(named: "placeholder"),
+                                       placeholder: UIImage(named: "img-loading"),
                                        options: [
                                         .scaleFactor(UIScreen.main.scale),
                                         .transition(.fade(1)),

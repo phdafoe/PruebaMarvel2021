@@ -30,7 +30,7 @@ class HeaderDetailCell: UITableViewCell, ReuseIdentifierProtocol, HeaderDetailCe
     internal func setInfoHeaderView(data: ResultCharacter) {
         self.myNameLBL?.text = data.name
         self.myImage.kf.setImage(with: ImageResource(downloadURL: (data.thumbnail?.pathURL)!),
-                                       placeholder: UIImage(named: "placeholder"),
+                                       placeholder: UIImage(named: "img-loading"),
                                        options: [
                                         .scaleFactor(UIScreen.main.scale),
                                         .transition(.fade(1)),

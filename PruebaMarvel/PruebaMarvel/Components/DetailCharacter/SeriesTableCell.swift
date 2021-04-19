@@ -51,7 +51,7 @@ class SeriesTableCell: UITableViewCell, ReuseIdentifierProtocol, SeriesTableCell
             self.myPrice.text = "\(data.prices![0].price ?? 0) €"
         }
         self.myImageComic.kf.setImage(with: ImageResource(downloadURL: (data.thumbnail?.pathURL)!),
-                                       placeholder: UIImage(named: "placeholder"),
+                                       placeholder: UIImage(named: "img-loading"),
                                        options: [
                                         .scaleFactor(UIScreen.main.scale),
                                         .transition(.fade(1)),

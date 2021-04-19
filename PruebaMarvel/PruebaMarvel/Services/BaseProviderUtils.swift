@@ -50,69 +50,11 @@ class BaseProviderUtils {
 		}
 	}
 
-//	static func manageResponseData(data: Data?, encrypted: Bool) -> Data? {
-//		guard let data = data else { return nil }
-//
-//		var decryptedBytes: Data?
-//
-//		if encrypted {
-//			// Desencriptar
-//
-//		} else {
-//			decryptedBytes = data
-//		}
-//
-//		return decryptedBytes
-//	}
-//
-//	static func apiResponseError(responseData: Data?, responseStatusCode: Int?, failure: @escaping (CustomErrorModel) -> Void) {
-//		let errorModel = CustomErrorModel(data: responseData, httpCode: responseStatusCode)
-//
-//		Utils.print(errorModel)
-//		Utils.print("*************************** END ***************************")
-//
-//		failure(errorModel)
-//	}
-//
-//
-//
-//	static func manageResponse(customRequest: CustomRequest, response: HTTPURLResponse, data: Data?, success: (Data?) -> Void, failure: @escaping (CustomErrorModel) -> Void) {
-//
-//		print(response.statusCode)
-//		if (200 ..< 300).contains(response.statusCode) {
-//
-//			guard let data = data else {
-//				apiResponseError(responseData: nil,
-//								 responseStatusCode: response.statusCode,
-//								 failure: failure)
-//				return
-//			}
-//
-//			let decryptedBytes = BaseProviderUtils.manageResponseData(data: data, encrypted: customRequest.additionalConfiguration.encrypted)
-//			printSuccessResponse(endpoint: customRequest.fullEndpoint, data: data, decryptedBytes: decryptedBytes, printData: customRequest.additionalConfiguration.printLog)
-//			success(decryptedBytes)
-//		} else {
-//			let decryptedBytes = BaseProviderUtils.manageResponseData(data: data, encrypted: customRequest.additionalConfiguration.encrypted)
-//			printFailureResponse(endpoint: customRequest.fullEndpoint, data: data, decryptedBytes: decryptedBytes, printData: customRequest.additionalConfiguration.printLog)
-//			apiResponseError(responseData: decryptedBytes,
-//							 responseStatusCode: response.statusCode,
-//							 failure: failure)
-//			return
-//		}
-//	}
-
 	static func getData(name: String, withExtension: String = "json", forClass: AnyClass) -> Data? {
 		let bundle = Bundle(for: forClass)
 		let fileUrl = bundle.url(forResource: name, withExtension: withExtension)
 		let data = try? Data(contentsOf: fileUrl!)
 		return data
 	}
-	
-	static func getHeadersFromContext(_ context: URLEndpoint.BaseURLContext, authenticated: Bool) -> [String: String] {
 
-		switch context {
-		case .marvel:
-            return ["Referer": "developer.marvel.com"]
-		}
-	}
 }

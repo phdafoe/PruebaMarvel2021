@@ -39,26 +39,6 @@ class Utils {
         }
     }
     
-    struct RestEntity {
-        private var values: [String: Any] = [:]
-
-        mutating func add(value: Any, forKey key: String) {
-            values[key] = value
-        }
-
-        func value(forKey key: String) -> Any? {
-            return values[key]
-        }
-
-        func allValues() -> [String: Any] {
-            return values
-        }
-
-        func totalItems() -> Int {
-            return values.count
-        }
-    }
-    
     static func print(_ items: Any..., separator: String = " ", terminator: String = "\n") {
         #if DEBUG
 

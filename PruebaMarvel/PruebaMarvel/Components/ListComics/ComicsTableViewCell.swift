@@ -31,7 +31,7 @@ class ComicsTableViewCell: UITableViewCell, ReuseIdentifierProtocol {
         guard let dataDes = data else { return }
         self.myNameLBL.text = dataDes.title
         self.myImageView.kf.setImage(with: ImageResource(downloadURL: (data?.thumbnail?.pathURL)!),
-                                       placeholder: UIImage(named: "placeholder"),
+                                       placeholder: UIImage(named: "img-loading"),
                                        options: [
                                         .scaleFactor(UIScreen.main.scale),
                                         .transition(.fade(1)),

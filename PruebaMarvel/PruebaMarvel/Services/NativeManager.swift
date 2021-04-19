@@ -52,16 +52,17 @@ class NativeManager: RequestManager {
 
 		let sessionConfiguration = URLSessionConfiguration.default
 		let session = URLSession(configuration: sessionConfiguration)
+        BaseProviderUtils.printRequest(customRequest)
 		let task = session.dataTask(with: request) { data, response, error in
             if error == nil {
                 self.delegate?.responseGet(customRequest: customRequest)
-                
                 if let httpResponse = response as? HTTPURLResponse {
                     if (200 ..< 300).contains(httpResponse.statusCode){
                         if let dataDes = data{
                             do {
                                 let decodeResponse = try Utils.BaseURL().jsonDecoder.decode(D.self, from: dataDes)
                                 DispatchQueue.main.async {
+                                    BaseProviderUtils.printSuccessResponse(endpoint: customRequest.fullEndpoint, data: dataDes, decryptedBytes: nil, printData: customRequest.additionalConfiguration.printLog)
                                     success(decodeResponse)
                                 }
                             } catch {
