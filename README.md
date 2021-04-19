@@ -113,12 +113,11 @@ Se utiliza la Api de [Marvel](https://developer.marvel.com/documentation/getting
 ![StoreManager2](https://github.com/phdafoe/EntelgyMarvel/blob/main/StoreManager2.png)
 
 ### Dependencias y librerías
-- Se tiene en cuenta para realizar las llamadas la implementacion de [CryptoSwift](https://github.com/krzyzanowskim/CryptoSwift), para generar el respectivo hash, requisito de la Api
-- Se tiene en cuenta también la implementación de [Kingfisher](https://github.com/onevcat/Kingfisher), para cargar las imágenes.
+- Se tiene en cuenta la implementación de [Kingfisher](https://github.com/onevcat/Kingfisher), para cargar las imágenes.
 
 ### Instalación de dependencias (SPM)
-- Se usa [Swift Package Manager](https://swift.org/package-manager/), aprovechando que el proyecto esta creado en la version de Xcode 12.3.
+- Se usa CocoaPods para la gestión de librerías de terceros.
 
 ### Implementación de Test Unitarios
-- Se han construido algunos Test con XCTest, para comprobar llamadas del tipo Mock.
+- Se han construido algunos Test con XCTest.
 
