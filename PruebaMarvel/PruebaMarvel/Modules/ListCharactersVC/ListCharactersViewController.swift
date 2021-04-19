@@ -22,7 +22,7 @@ class ListCharactersViewController: BaseViewController<ListCharactersPresenterPr
         self.myCollectionView.delegate = self
         self.myCollectionView.dataSource = self
         self.myCollectionView.register(UINib(nibName: CharacterCollectionViewCell.defaultReuseIdentifier, bundle: nil), forCellWithReuseIdentifier: CharacterCollectionViewCell.defaultReuseIdentifier)
-        self.presenter?.loadCharacters(with: .characters)
+        self.presenter?.loadCharacters()
     }
     
 }

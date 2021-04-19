@@ -80,11 +80,8 @@ class BaseProviderUtils {
 				
 		print(response.statusCode)
 		if (200 ..< 300).contains(response.statusCode) {
-			// Gestión del caso correcto
 
-			// Se obtiene la respuesta.
 			guard let data = data else {
-				// Si la respuesta no tiene datos, se devuelve un error.
 				apiResponseError(responseData: nil,
 								 responseStatusCode: response.statusCode,
 								 failure: failure)
@@ -92,15 +89,11 @@ class BaseProviderUtils {
 			}
 
 			let decryptedBytes = BaseProviderUtils.manageResponseData(data: data, encrypted: customRequest.additionalConfiguration.encrypted)
-
 			printSuccessResponse(endpoint: customRequest.fullEndpoint, data: data, decryptedBytes: decryptedBytes, printData: customRequest.additionalConfiguration.printLog)
-
 			success(decryptedBytes)
 		} else {
 			let decryptedBytes = BaseProviderUtils.manageResponseData(data: data, encrypted: customRequest.additionalConfiguration.encrypted)
-
 			printFailureResponse(endpoint: customRequest.fullEndpoint, data: data, decryptedBytes: decryptedBytes, printData: customRequest.additionalConfiguration.printLog)
-
 			apiResponseError(responseData: decryptedBytes,
 							 responseStatusCode: response.statusCode,
 							 failure: failure)

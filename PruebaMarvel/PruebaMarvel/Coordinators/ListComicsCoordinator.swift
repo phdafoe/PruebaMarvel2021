@@ -24,7 +24,7 @@ final class ListComicsAssembly {
     
     static fileprivate func buildPresenter(viewController: ListComicsViewController) -> ListComicsPresenterProtocolOutput {
         let presenter = ListComicsPresenter(viewController: viewController)
-        presenter.provider = buildProvider()
+        //presenter.provider = buildProvider()
         presenter.router = buildRouter(viewController: viewController, presenter: presenter)
         return presenter
     }
@@ -34,10 +34,10 @@ final class ListComicsAssembly {
         return router
     }
     
-    static func buildProvider() -> ServiceManagerProtocol {
-        let provider = StoreManager.shared
-        return provider
-    }
+//    static func buildProvider() -> ServiceManagerProtocol {
+//        let provider = StoreManager.shared
+//        return provider
+//    }
     
 }
 

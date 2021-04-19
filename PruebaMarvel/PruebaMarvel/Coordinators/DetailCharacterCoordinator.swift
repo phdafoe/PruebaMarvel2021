@@ -26,7 +26,7 @@ final class DetailCharacterAssembly {
     static fileprivate func buildPresenter(dto: DetailCharacterCoordinatorDTO? = nil, viewController: DetailCharacterViewController) -> DetailCharacterPresenterProtocolOutput {
         let presenter = DetailCharacterPresenter(viewController: viewController)
         presenter.dataResult = dto?.data
-        presenter.provider = buildProvider()
+        //presenter.provider = buildProvider()
         presenter.router = buildRouter(viewController: viewController, presenter: presenter)
         return presenter
     }
@@ -36,10 +36,10 @@ final class DetailCharacterAssembly {
         return router
     }
     
-    static func buildProvider() -> ServiceManagerProtocol {
-        let provider = StoreManager.shared
-        return provider
-    }
+//    static func buildProvider() -> ServiceManagerProtocol {
+//        let provider = StoreManager.shared
+//        return provider
+//    }
     
 }
 

@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import MBProgressHUD
 
 // MARK: - BaseNavigationController
 class BaseNavigationController: UINavigationController {
@@ -20,11 +21,21 @@ class BaseNavigationController: UINavigationController {
         super.didReceiveMemoryWarning()
     }
     
+    
+    
 }
 
 // MARK: - BaseViewController
 class BaseViewController <T>: UIViewController {
      var presenter: T?
+    
+    // MARK: Loader
+    func showLoading(view: UIView, animated: Bool) {
+        MBProgressHUD.showAdded(to: view, animated: animated)
+    }
+    func hideLoading(view: UIView, animated: Bool) {
+        MBProgressHUD.hide(for: view, animated: animated)
+    }
 }
 
 // MARK: - BasePresenter

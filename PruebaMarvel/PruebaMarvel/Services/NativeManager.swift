@@ -8,22 +8,20 @@ import Foundation
 
 protocol RequestManager {
     var delegate: BaseProviderDelegate? { get set }
-    func request(_ customRequest: CustomRequest, success: @escaping (CustomResponse) -> Void, failure: @escaping (CustomErrorModel) -> Void) -> URLSessionTask?
+    func request<D: Decodable>(_ customRequest: CustomRequest, type: D.Type, success: @escaping (D) -> Void, failure: @escaping (CustomErrorModel) -> Void) -> URLSessionTask?
 }
 
 class NativeManager: RequestManager {
-	// swiftlint:disable function_parameter_count
-	// swiftlint:disable multiple_closures_with_trailing_closure
-
+	
 	weak var delegate: BaseProviderDelegate?
 
 	var requestHttpHeaders = RestEntity()
 	var urlQueryParameters = RestEntity()
 	var httpBodyParameters = RestEntity()
 
-	func request(_ customRequest: CustomRequest, success: @escaping (CustomResponse) -> Void, failure: @escaping (CustomErrorModel) -> Void) -> URLSessionTask? {
+    func request<D: Decodable>(_ customRequest: CustomRequest, type: D.Type, success: @escaping (D) -> Void, failure: @escaping (CustomErrorModel) -> Void) -> URLSessionTask? {
 
-		let endpoint = customRequest.endpoint //URLEndpoint.buildURL(urlContext: dto.urlContext, endpoint: dto.endpoint)
+		let endpoint = customRequest.fullEndpoint
 
 		for currentHeader in customRequest.headers {
 			requestHttpHeaders.add(value: currentHeader.value, forKey: currentHeader.key)
@@ -55,24 +53,24 @@ class NativeManager: RequestManager {
 		let sessionConfiguration = URLSessionConfiguration.default
 		let session = URLSession(configuration: sessionConfiguration)
 		let task = session.dataTask(with: request) { data, response, error in
-			
-			self.delegate?.responseGet(customRequest: customRequest)
-			
-			if let httpResponse = response as? HTTPURLResponse {
-				BaseProviderUtils.manageResponse(customRequest: customRequest, response: httpResponse, data: data, success: { data in
-
-					DispatchQueue.main.async {
-						success(CustomResponse(data: data))
-					}
-				}) { error in
-
-					DispatchQueue.main.async {
-						failure(error)
-					}
-				}
-			} else {
-				failure(CustomErrorModel(httpClientError: .notFound, backendError: .unknownError))
-			}
+            if error == nil {
+                self.delegate?.responseGet(customRequest: customRequest)
+                
+                if let httpResponse = response as? HTTPURLResponse {
+                    if let dataDes = data{
+                        do {
+                            let decodeResponse = try Utils.BaseURL().jsonDecoder.decode(D.self, from: dataDes)
+                            DispatchQueue.main.async {
+                                success(decodeResponse)
+                            }
+                        } catch {
+                            failure(CustomErrorModel(httpClientError: .notFound, backendError: .unknownError))
+                        }
+                    }
+                }
+            } else {
+                failure(CustomErrorModel(httpClientError: .notFound, backendError: .unknownError))
+            }
 		}
 		task.resume()
 		return task

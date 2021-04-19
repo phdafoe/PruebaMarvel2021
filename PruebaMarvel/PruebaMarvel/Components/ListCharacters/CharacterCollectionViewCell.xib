@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="CharacterCollectionViewCell" customModule="EntelgyMarvel" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="180" height="270"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="180" height="270"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="Dd7-lR-wlQ" userLabel="placeholder">
+                        <rect key="frame" x="0.0" y="0.0" width="180" height="270"/>
+                    </imageView>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="AQI-DP-lsE">
+                        <rect key="frame" x="0.0" y="0.0" width="180" height="270"/>
+                    </imageView>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="degradado" translatesAutoresizingMaskIntoConstraints="NO" id="EKO-AR-tLl">
+                        <rect key="frame" x="0.0" y="0.0" width="180" height="270"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="270" id="wKo-Gj-aKV"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mID-Fz-2tF">
+                        <rect key="frame" x="8" y="241.5" width="164" height="20.5"/>
+                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                        <color key="textColor" systemColor="systemRedColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="mID-Fz-2tF" secondAttribute="bottom" constant="8" id="0dn-HG-pIV"/>
+                <constraint firstItem="AQI-DP-lsE" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="2kG-Ye-R62"/>
+                <constraint firstAttribute="bottom" secondItem="Dd7-lR-wlQ" secondAttribute="bottom" id="3Vh-V2-vf8"/>
+                <constraint firstItem="Dd7-lR-wlQ" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="89X-h0-EoV"/>
+                <constraint firstAttribute="bottom" secondItem="AQI-DP-lsE" secondAttribute="bottom" id="8wb-Wn-Nab"/>
+                <constraint firstItem="Dd7-lR-wlQ" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="A1s-aX-sLO"/>
+                <constraint firstAttribute="trailing" secondItem="mID-Fz-2tF" secondAttribute="trailing" constant="8" id="AIL-6T-RMc"/>
+                <constraint firstItem="AQI-DP-lsE" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="Czm-bz-Box"/>
+                <constraint firstItem="mID-Fz-2tF" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="8" id="Lly-lI-WSm"/>
+                <constraint firstAttribute="trailing" secondItem="EKO-AR-tLl" secondAttribute="trailing" id="UMP-TH-SnI"/>
+                <constraint firstAttribute="trailing" secondItem="AQI-DP-lsE" secondAttribute="trailing" id="Y8C-Ej-lKf"/>
+                <constraint firstItem="EKO-AR-tLl" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="YjN-Ge-ndE"/>
+                <constraint firstAttribute="trailing" secondItem="Dd7-lR-wlQ" secondAttribute="trailing" id="ina-eU-SiF"/>
+                <constraint firstAttribute="bottom" secondItem="EKO-AR-tLl" secondAttribute="bottom" id="kqY-89-yfZ"/>
+            </constraints>
+            <connections>
+                <outlet property="myCharacter" destination="mID-Fz-2tF" id="Wm2-9B-Xge"/>
+                <outlet property="myDegradado" destination="EKO-AR-tLl" id="fJa-aw-eQm"/>
+                <outlet property="myImagePoster" destination="AQI-DP-lsE" id="JsK-9Y-6lg"/>
+                <outlet property="myPlaceHolder" destination="Dd7-lR-wlQ" id="VF7-rk-E7O"/>
+            </connections>
+            <point key="canvasLocation" x="140.57971014492756" y="129.91071428571428"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="degradado" width="320" height="70"/>
+        <image name="placeholder" width="1280" height="800"/>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

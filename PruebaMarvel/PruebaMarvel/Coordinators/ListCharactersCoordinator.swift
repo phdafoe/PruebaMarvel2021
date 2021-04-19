@@ -35,8 +35,8 @@ final class ListCharactersAssembly {
         return router
     }
     
-    static func buildProvider() -> ServiceManagerProtocol {
-        let provider = StoreManager.shared
+    static func buildProvider() -> ListCharactersProviderProtocol {
+        let provider = ListCharactersProvider()
         return provider
     }
     

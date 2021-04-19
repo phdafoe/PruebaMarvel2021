@@ -132,10 +132,10 @@ struct URLEndpoint {
         case marvel
     }
 
-    static var characters = "/characters"
-    static var comics = "/comics"
-    static var series = "/series"
-    static var stories = "/stories"
+    static var characters = "characters"
+    static var comics = "comics"
+    static var series = "series"
+    static var stories = "stories"
 }
 
 extension URLEndpoint {

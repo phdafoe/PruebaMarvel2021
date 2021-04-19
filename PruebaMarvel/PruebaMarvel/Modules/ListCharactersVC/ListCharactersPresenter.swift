@@ -8,7 +8,7 @@
 import Foundation
 
 protocol ListCharactersPresenterProtocolOutput : class {
-    func loadCharacters(with endpoint: ListEndPoint)
+    func loadCharacters()
     func getNumberOfRowCell() -> Int?
     func getModelDataCell(index: Int) -> ResultCharacter?
     func showDetailCharacterFromView(data: ResultCharacter)
@@ -17,8 +17,7 @@ protocol ListCharactersPresenterProtocolOutput : class {
 final class ListCharactersPresenter: BasePresenter<ListCharactersViewController, ListCharactersRouterProtocolOutput> {
     
     var listCharacters: [ResultCharacter]? = []
-    var error: NSError?
-    var provider: ServiceManagerProtocol!
+    var provider: ListCharactersProviderProtocol!
  
 }
 
@@ -29,18 +28,19 @@ extension ListCharactersPresenter: ListCharactersPresenterProtocolOutput {
     }
     
     
-    internal func loadCharacters(with endpoint: ListEndPoint) {
+    internal func loadCharacters() {
         self.listCharacters = nil
-        self.provider.fetchListCharacters(from: endpoint) { [weak self] (result) in
-            guard let self = self else { return }
-            switch result {
-            case .success(let response):
-                self.listCharacters = response.data?.results
+        self.viewController?.showLoading(view: (self.viewController?.view)!, animated: true)
+        provider.fetchListCharacters { (result) in
+            if let resultDes = result {
+                self.listCharacters = resultDes.data?.results
                 self.viewController?.reloadData()
-            case .failure(let error):
-                self.error = error as NSError
+                self.viewController?.hideLoading(view: (self.viewController?.view)!, animated: true)
             }
+        } failure: { (error) in
+            print(error?.httpClientError as Any)
         }
+
     }
     
     internal func getNumberOfRowCell() -> Int? {
