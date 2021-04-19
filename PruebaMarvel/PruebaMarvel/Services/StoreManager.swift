@@ -13,17 +13,7 @@ import Foundation
 //    var requestHttpHeaders = RestEntity()
 //    private init() {}
 //    
-//    func fetchListCharacters(from endpoint: ListEndPoint, completion: @escaping (Result<ListCharacteresModel, ApiError>) -> ()) {
-//        guard let url = URL(string: "\(Utils.BaseURL().baseAPIURL)/\(endpoint)") else {
-//            completion(.failure(.invalidEndpoint))
-//            return
-//        }
-//        self.loadURLAndDecode(url: url, params:[
-//            "orderBy": "name",
-//            "limit": "20",
-//            "apikey": Utils.BaseURL().publicApiKey
-//        ], completion: completion)
-//    }
+//
 //    
 //    func fetchDetailCharacter(from endpoint: ListEndPoint, id: String, typeEndpoint: ListEndPoint, completion: @escaping (Result<DetailComicModel, ApiError>) -> ()) {
 //        guard let url = URL(string: "\(Utils.BaseURL().baseAPIURL)/\(endpoint)/\(id)/\(typeEndpoint)") else {
@@ -51,17 +41,7 @@ import Foundation
 //        ], completion: completion)
 //    }
 //    
-//    func fetchListComics(from endpoint: ListEndPoint, completion: @escaping (Result<ListComicsModel, ApiError>) -> ()) {
-//        guard let url = URL(string: "\(Utils.BaseURL().baseAPIURL)/\(endpoint)") else {
-//            completion(.failure(.invalidEndpoint))
-//            return
-//        }
-//        self.loadURLAndDecode(url: url, params:[
-//            "orderBy": "title",
-//            "limit": "20",
-//            "apikey": Utils.BaseURL().publicApiKey
-//        ], completion: completion)
-//    }
+//    
 //    
 //    private func loadURLAndDecode<D>(customRequest: CustomRequest, params:[String: String]? = nil, completion: @escaping (Result<D, ApiError>) -> ()) where D: Decodable {
 //        

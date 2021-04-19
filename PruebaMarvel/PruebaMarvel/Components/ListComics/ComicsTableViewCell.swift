@@ -30,14 +30,16 @@ class ComicsTableViewCell: UITableViewCell, ReuseIdentifierProtocol {
     internal func setupCell(data: ResultComics?) {
         guard let dataDes = data else { return }
         self.myNameLBL.text = dataDes.title
-        self.myImageView.kf.setImage(with: ImageResource(downloadURL: (data?.thumbnail?.pathURL)!),
-                                       placeholder: UIImage(named: "img-loading"),
-                                       options: [
-                                        .scaleFactor(UIScreen.main.scale),
-                                        .transition(.fade(1)),
-                                        .cacheOriginalImage
-                                       ],
-                                       completionHandler: nil)
+        DispatchQueue.main.async {
+            self.myImageView.kf.setImage(with: ImageResource(downloadURL: (data?.thumbnail?.pathURL)!),
+                                         placeholder: UIImage(named: "img-loading"),
+                                         options: [
+                                            .scaleFactor(UIScreen.main.scale),
+                                            .transition(.fade(1)),
+                                            .cacheOriginalImage
+                                         ],
+                                         completionHandler: nil)
+        }
     }
     
 }

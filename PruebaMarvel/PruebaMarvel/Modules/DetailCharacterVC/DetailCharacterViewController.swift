@@ -61,7 +61,8 @@ extension DetailCharacterViewController: UITableViewDelegate, UITableViewDataSou
         switch indexPath.section {
         case 0:
             let cell = myDetailTableView.dequeueReusableCell(withIdentifier: HeaderDetailCell.defaultReuseIdentifier, for: indexPath) as! HeaderDetailCell
-            self.presenter?.getHeaderInfoOfRow { (resultHeader) in
+            self.presenter?.getHeaderInfoOfRow { [weak self] (resultHeader) in
+                guard self == self else { return }
                 if let resultHeaderDes = resultHeader {
                     cell.setInfoHeaderView(data: resultHeaderDes)
                 }
@@ -69,7 +70,8 @@ extension DetailCharacterViewController: UITableViewDelegate, UITableViewDataSou
             return cell
         case 1:
             let cell = myDetailTableView.dequeueReusableCell(withIdentifier: SeriesTableViewCell.defaultReuseIdentifier, for: indexPath) as! SeriesTableViewCell
-            self.presenter?.getInfoSeries { (resultSeries) in
+            self.presenter?.getInfoSeries { [weak self] (resultSeries) in
+                guard self == self else { return }
                 if let resultSeriesDes = resultSeries {
                     cell.setArraySeries(data: resultSeriesDes)
                 }
@@ -77,7 +79,8 @@ extension DetailCharacterViewController: UITableViewDelegate, UITableViewDataSou
             return cell
         default:
             let cell = myDetailTableView.dequeueReusableCell(withIdentifier: SeriesTableCell.defaultReuseIdentifier, for: indexPath) as! SeriesTableCell
-            self.presenter?.getInfoComic(index: indexPath.row) { (result) in
+            self.presenter?.getInfoComic(index: indexPath.row) { [weak self] (result) in
+                guard self == self else { return }
                 cell.setInfo(data: result)
             }
             return cell

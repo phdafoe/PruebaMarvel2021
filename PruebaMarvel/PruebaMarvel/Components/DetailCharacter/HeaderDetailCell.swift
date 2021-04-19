@@ -29,14 +29,16 @@ class HeaderDetailCell: UITableViewCell, ReuseIdentifierProtocol, HeaderDetailCe
     
     internal func setInfoHeaderView(data: ResultCharacter) {
         self.myNameLBL?.text = data.name
-        self.myImage.kf.setImage(with: ImageResource(downloadURL: (data.thumbnail?.pathURL)!),
-                                       placeholder: UIImage(named: "img-loading"),
-                                       options: [
-                                        .scaleFactor(UIScreen.main.scale),
-                                        .transition(.fade(1)),
-                                        .cacheOriginalImage
-                                       ],
-                                       completionHandler: nil)
+        DispatchQueue.main.async {
+            self.myImage.kf.setImage(with: ImageResource(downloadURL: (data.thumbnail?.pathURL)!),
+                                           placeholder: UIImage(named: "img-loading"),
+                                           options: [
+                                            .scaleFactor(UIScreen.main.scale),
+                                            .transition(.fade(1)),
+                                            .cacheOriginalImage
+                                           ],
+                                           completionHandler: nil)
+        }
     }
     
 }

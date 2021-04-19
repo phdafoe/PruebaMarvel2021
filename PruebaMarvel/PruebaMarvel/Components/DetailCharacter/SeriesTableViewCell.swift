@@ -8,7 +8,7 @@
 import UIKit
 
 protocol SeriesTableViewCellProtocol: class {
-    func setArraySeries(data: [ResultSeries])
+    func setArraySeries(data: [ResultSeries]?)
 }
 
 
@@ -30,9 +30,11 @@ class SeriesTableViewCell: UITableViewCell, ReuseIdentifierProtocol, SeriesTable
 
     }
     
-    internal func setArraySeries(data: [ResultSeries]) {
-        self.myArraySeries = data
-        self.myCollectionView.reloadData()
+    internal func setArraySeries(data: [ResultSeries]?) {
+        if let dataDes = data {
+            self.myArraySeries = dataDes
+            self.myCollectionView.reloadData()
+        }
     }
     
     

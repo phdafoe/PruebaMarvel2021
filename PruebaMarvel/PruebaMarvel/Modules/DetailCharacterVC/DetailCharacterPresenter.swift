@@ -30,29 +30,33 @@ final class DetailCharacterPresenter: BasePresenter<DetailCharacterViewControlle
 extension DetailCharacterPresenter: DetailCharacterPresenterProtocolOutput {
     
     func loadDetailCharacter() {
-//        self.provider.fetchDetailCharacter(from: endpoint, id: "\(self.dataResult?.id ?? 0)", typeEndpoint: .comics) { [weak self] (result) in
-//            guard let self = self else { return }
-//            switch result {
-//            case .success(let response):
-//                self.listDetailComic = response.data?.results
-//                self.viewController?.reloadData()
-//            case .failure(let error):
-//                self.error = error as NSError
-//            }
-//        }
+        self.listDetailComic = nil
+        self.viewController?.showLoading(view: (self.viewController?.view)!, animated: true)
+        self.provider.fetchDetailCharacter(id: "\(self.dataResult?.id ?? 0)") { [weak self] (result) in
+            guard let self = self else { return }
+            if let resultDes = result {
+                self.listDetailComic = resultDes.data?.results
+                self.viewController?.reloadData()
+                self.viewController?.hideLoading(view: (self.viewController?.view)!, animated: true)
+            }
+        } failure: { (error) in
+            print(error?.httpClientError as Any)
+        }
     }
 
     func loadDetailSeries() {
-//        self.provider.fetchDetailSeries(from: endpoint, id: "\(self.dataResult?.id ?? 0)", typeEndpoint: .series) { [weak self] (result) in
-//            guard let self = self else { return }
-//            switch result {
-//            case .success(let response):
-//                self.listSeries = response.data?.results
-//                self.viewController?.reloadData()
-//            case .failure(let error):
-//                self.error = error as NSError
-//            }
-//        }
+        self.listSeries = nil
+        self.viewController?.showLoading(view: (self.viewController?.view)!, animated: true)
+        self.provider.fetchDetailSeries(id: "\(self.dataResult?.id ?? 0)") { [weak self] (result) in
+            guard let self = self else { return }
+            if let resultDes = result {
+                self.listSeries = resultDes.data?.results
+                self.viewController?.reloadData()
+                self.viewController?.hideLoading(view: (self.viewController?.view)!, animated: true)
+            }
+        } failure: { (error) in
+            print(error?.httpClientError as Any)
+        }
     }
 
     internal func getHeaderInfoOfRow(completion: @escaping (ResultCharacter?) -> Void) {
@@ -68,7 +72,7 @@ extension DetailCharacterPresenter: DetailCharacterPresenterProtocolOutput {
     }
 
     func getInfoSeries(completion: @escaping ([ResultSeries]?) -> Void) {
-        completion(self.listSeries!)
+        completion(self.listSeries)
     }
 
     
