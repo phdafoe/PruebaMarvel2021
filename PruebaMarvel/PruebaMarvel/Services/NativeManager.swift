@@ -12,10 +12,9 @@ protocol RequestManager {
 
 class NativeManager: RequestManager {
 	
-
-	var requestHttpHeaders = RestEntity()
-	var urlQueryParameters = RestEntity()
-	var httpBodyParameters = RestEntity()
+    var requestHttpHeaders = RestEntity()
+    var urlQueryParameters = RestEntity()
+    var httpBodyParameters = RestEntity()
 
     func request<D: Decodable>(_ customRequest: CustomRequest, type: D.Type, success: @escaping (D) -> Void, failure: @escaping (CustomErrorModel) -> Void) -> URLSessionTask? {
 
@@ -76,87 +75,90 @@ class NativeManager: RequestManager {
 		return task
 	}
 
-	// MARK: - Private Methods
+	
+}
 
-	private func addURLQueryParameters(toURL url: URL) -> URL {
-		if urlQueryParameters.totalItems() > 0 {
-			guard var urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: false) else { return url }
-			var queryItems = [URLQueryItem]()
-			if urlComponents.queryItems == nil {
-				urlComponents.queryItems = queryItems
-			}
+extension NativeManager {
+    
+    private func addURLQueryParameters(toURL url: URL) -> URL {
+        if urlQueryParameters.totalItems() > 0 {
+            guard var urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: false) else { return url }
+            var queryItems = [URLQueryItem]()
+            if urlComponents.queryItems == nil {
+                urlComponents.queryItems = queryItems
+            }
 
-			for (key, value) in urlQueryParameters.allValues() {
-				let item = URLQueryItem(name: key, value: "\(value)".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed))
+            for (key, value) in urlQueryParameters.allValues() {
+                let item = URLQueryItem(name: key, value: "\(value)".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed))
 
-				queryItems.append(item)
-				urlComponents.queryItems?.append(item)
-			}
+                queryItems.append(item)
+                urlComponents.queryItems?.append(item)
+            }
 
-			guard let updatedURL = urlComponents.url else { return url }
-			return updatedURL
-		}
+            guard let updatedURL = urlComponents.url else { return url }
+            return updatedURL
+        }
 
-		return url
-	}
+        return url
+    }
 
-	private func getHttpBody(params: [String: Any]? = nil) -> Data? {
-		guard let contentType = requestHttpHeaders.value(forKey: "Content-Type") as? String else { return nil }
+    private func getHttpBody(params: [String: Any]? = nil) -> Data? {
+        guard let contentType = requestHttpHeaders.value(forKey: "Content-Type") as? String else { return nil }
 
-		if contentType.contains("application/json") {
-			if let params = params {
-				if #available(iOS 11.0, *) {
-					return try? JSONSerialization.data(withJSONObject: params, options: [.prettyPrinted, .sortedKeys])
-				} else {
-					return nil
-				}
-			} else {
-				if #available(iOS 11.0, *) {
-					let body = try? JSONSerialization.data(withJSONObject: httpBodyParameters.allValues(), options: [.prettyPrinted, .sortedKeys])
-					return body
-				} else {
-					return nil
-				}
-			}
+        if contentType.contains("application/json") {
+            if let params = params {
+                if #available(iOS 11.0, *) {
+                    return try? JSONSerialization.data(withJSONObject: params, options: [.prettyPrinted, .sortedKeys])
+                } else {
+                    return nil
+                }
+            } else {
+                if #available(iOS 11.0, *) {
+                    let body = try? JSONSerialization.data(withJSONObject: httpBodyParameters.allValues(), options: [.prettyPrinted, .sortedKeys])
+                    return body
+                } else {
+                    return nil
+                }
+            }
 
-		} else if contentType.contains("application/x-www-form-urlencoded") {
-			let bodyString = httpBodyParameters.allValues().map { "\($0)=\(String(describing: "\($1)".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!))" }.joined(separator: "&")
-			return bodyString.data(using: .utf8)
-		} else {
-			return nil
-		}
-	}
+        } else if contentType.contains("application/x-www-form-urlencoded") {
+            let bodyString = httpBodyParameters.allValues().map { "\($0)=\(String(describing: "\($1)".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!))" }.joined(separator: "&")
+            return bodyString.data(using: .utf8)
+        } else {
+            return nil
+        }
+    }
 
-	private func prepareRequest(withURL url: URL?, httpBody: Data?, httpMethod: HTTPMethod) -> URLRequest? {
-		guard let url = url else { return nil }
-		var request = URLRequest(url: url)
-		request.httpMethod = httpMethod.rawValue
+    private func prepareRequest(withURL url: URL?, httpBody: Data?, httpMethod: HTTPMethod) -> URLRequest? {
+        guard let url = url else { return nil }
+        var request = URLRequest(url: url)
+        request.httpMethod = httpMethod.rawValue
 
-		for (header, value) in requestHttpHeaders.allValues() {
-			request.setValue("\(value)", forHTTPHeaderField: header)
-		}
+        for (header, value) in requestHttpHeaders.allValues() {
+            request.setValue("\(value)", forHTTPHeaderField: header)
+        }
 
-		request.httpBody = httpBody
-		return request
-	}
+        request.httpBody = httpBody
+        return request
+    }
 
-	struct RestEntity {
-		private var values: [String: Any] = [:]
+    struct RestEntity {
+        private var values: [String: Any] = [:]
 
-		mutating func add(value: Any, forKey key: String) {
-			values[key] = value
-		}
+        mutating func add(value: Any, forKey key: String) {
+            values[key] = value
+        }
 
-		func value(forKey key: String) -> Any? {
-			return values[key]
-		}
+        func value(forKey key: String) -> Any? {
+            return values[key]
+        }
 
-		func allValues() -> [String: Any] {
-			return values
-		}
+        func allValues() -> [String: Any] {
+            return values
+        }
 
-		func totalItems() -> Int {
-			return values.count
-		}
-	}
+        func totalItems() -> Int {
+            return values.count
+        }
+    }
 }

@@ -9,29 +9,28 @@ import Foundation
 
 protocol ListComicsPresenterProtocolOutput: class {
     func loadComics()
-    func getNumberOfRowCell() -> Int?
-    func getModelDataCell(index: Int) -> ResultComics?
 }
 
 final class ListComicsPresenter: BasePresenter<ListComicsViewController, ListComicsRouterProtocolOutput> {
     
-    var listComics: [ResultComics]? = []
+    var listComics: [ComicsViewModel] = []
+    //var comicsModels: [Any] = []
     var provider: ListComicsProviderProtocol!
+    weak var tablePresenterDelegate: TablePresenterDelegate?
  
 }
 
-
-
 extension ListComicsPresenter: ListComicsPresenterProtocolOutput {
     
+    
     internal func loadComics() {
-        self.listComics = nil
+        self.listComics = []
         self.viewController?.showLoading(view: (self.viewController?.view)!, animated: true)
         self.provider.fetchListComics { [weak self] (result) in
             guard let self = self else { return }
             if let resultDes = result {
-                self.listComics = resultDes.data?.results
-                self.viewController?.reloadData()
+                //self.listComics = resultDes.data?.results ?? []
+                self.updateContent(businessModel: resultDes.data?.results ?? [])
                 self.viewController?.hideLoading(view: (self.viewController?.view)!, animated: true)
             }
         } failure: { (error) in
@@ -39,11 +38,23 @@ extension ListComicsPresenter: ListComicsPresenterProtocolOutput {
         }
     }
     
-    func getNumberOfRowCell() -> Int? {
-        return self.listComics?.count ?? 0
+    private func updateContent(businessModel: [ResultComics]) {
+        listComics.removeAll()
+        listComics = businessModel.map { ComicsViewModel(viewModel: $0 )}
+        self.tablePresenterDelegate?.dataSourceUpdated()
+    }
+}
+
+extension ListComicsPresenter: TablePresenterProtocol {
+    
+    func numberOfCells(_ tableType: TableType, section: Int) -> Int {
+        return self.listComics.count
     }
     
-    func getModelDataCell(index: Int) -> ResultComics? {
-        return self.listComics![index]
+    func object(_ tableType: TableType, indexPath: IndexPath) -> Any {
+        self.listComics[indexPath.row]
     }
+    
+    
+    
 }

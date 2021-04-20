@@ -6,15 +6,6 @@
 //
 import Foundation
 
-protocol CustomRequestProtocol {
-	var headers: [String: String]? { get set }
-	static func getCustomRequest(params: BaseProviderParamsDTO?, headers: [String: String]?) -> CustomRequest
-}
-
-extension CustomRequestProtocol {
-	static func getCustomRequest(params: BaseProviderParamsDTO?, headers: [String: String]?) -> CustomRequest { return CustomRequest() }
-}
-
 enum AcceptResponseType {
 	case json
 	case pdf
@@ -139,6 +130,7 @@ struct URLEndpoint {
 }
 
 extension URLEndpoint {
+    
     static func getBaseUrl(urlContext: BaseURLContext) -> String {
         switch urlContext {
         case .marvel:

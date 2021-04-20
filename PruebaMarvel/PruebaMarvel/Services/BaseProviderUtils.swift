@@ -8,7 +8,7 @@
 import Foundation
 
 class BaseProviderUtils {
-	// swiftlint:disable function_parameter_count
+    
 	static let dateFormat = "dd/MM/yyyy-HH:mm:ss"
 
 	static func printRequest(_ customRequest: CustomRequest) {
