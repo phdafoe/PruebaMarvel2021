@@ -106,12 +106,6 @@ Se utiliza la Api de [Marvel](https://developer.marvel.com/documentation/getting
 ![Marvel1](https://github.com/phdafoe/EntelgyMarvel/blob/main/Marvel1.png)
 ![Marvel2](https://github.com/phdafoe/EntelgyMarvel/blob/main/Marvel2.png)
 
-### Estructura del ServiceManager - StoreManager
-
-![ServiceManager](https://github.com/phdafoe/EntelgyMarvel/blob/main/ServiceManager.png)
-![StoreManager1](https://github.com/phdafoe/EntelgyMarvel/blob/main/StoreManager1.png)
-![StoreManager2](https://github.com/phdafoe/EntelgyMarvel/blob/main/StoreManager2.png)
-
 ### Dependencias y librerías
 - Se tiene en cuenta la implementación de [Kingfisher](https://github.com/onevcat/Kingfisher), para cargar las imágenes.
 
