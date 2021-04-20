@@ -2,7 +2,7 @@
 //  ComicsViewModel.swift
 //  PruebaMarvel
 //
-//  Created by Andres Felipe Ocampo Eljaiek on 20/4/21.
+//  Created by Andres Felipe Ocampo Eljaiek
 //
 
 import Foundation

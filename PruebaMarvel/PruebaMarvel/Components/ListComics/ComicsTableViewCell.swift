@@ -1,17 +1,12 @@
 //
 //  ComicsTableViewCell.swift
-//  Marvel
+//  PruebaMarvel
 //
-//  Created by Andres Felipe Ocampo Eljaiek on 16/03/2021.
+//  Created by Andres Felipe Ocampo Eljaiek
 //
 
 import UIKit
 import Kingfisher
-
-protocol ComicsTableViewCellProtocol: class {
-    //func setupCell(data: ResultComics?)
-}
-
 
 class ComicsTableViewCell: BaseTableViewCell<ComicsViewModel>, ReuseIdentifierProtocol {
 
