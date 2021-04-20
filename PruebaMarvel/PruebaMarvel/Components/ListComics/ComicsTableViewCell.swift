@@ -38,7 +38,4 @@ class ComicsTableViewCell: BaseTableViewCell<ComicsViewModel>, ReuseIdentifierPr
                                          completionHandler: nil)
         }
     }
-    
-
-    
 }

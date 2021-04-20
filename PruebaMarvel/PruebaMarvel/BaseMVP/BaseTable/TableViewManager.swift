@@ -36,7 +36,7 @@ class TableViewManager: NSObject {
         self.tableView?.dataSource = self
         
         self.tableView?.clipsToBounds = true
-        self.tableView?.separatorStyle = .singleLine
+        self.tableView?.separatorStyle = .none
         self.tableView?.separatorColor = UIColor.white
         self.tableView?.separatorInset = .zero
         self.tableView?.showsVerticalScrollIndicator = false

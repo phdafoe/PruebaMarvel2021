@@ -42,6 +42,13 @@
 		B4699159262EC7E3000024CB /* BaseTableProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4699155262EC7E3000024CB /* BaseTableProtocols.swift */; };
 		B4699162262ECC65000024CB /* ComicsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4699161262ECC65000024CB /* ComicsViewModel.swift */; };
 		B4699166262ECD40000024CB /* ComicsViewCellDrawer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4699165262ECD40000024CB /* ComicsViewCellDrawer.swift */; };
+		B469916B262EDD94000024CB /* ListCharactersPresenterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4699169262EDD93000024CB /* ListCharactersPresenterTest.swift */; };
+		B469916C262EDD94000024CB /* ListCharactersCVTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B469916A262EDD94000024CB /* ListCharactersCVTest.swift */; };
+		B4699173262EDDAE000024CB /* ListPresenterMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4699170262EDDAE000024CB /* ListPresenterMock.swift */; };
+		B4699174262EDDAE000024CB /* ListComicsPresenterMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4699171262EDDAE000024CB /* ListComicsPresenterMock.swift */; };
+		B4699175262EDDAE000024CB /* ListCharactersProviderMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4699172262EDDAE000024CB /* ListCharactersProviderMock.swift */; };
+		B469917B262EE4F5000024CB /* DetailCharacterPresenterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B469917A262EE4F5000024CB /* DetailCharacterPresenterTest.swift */; };
+		B469917F262EE687000024CB /* DetailCharactersProviderMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = B469917E262EE687000024CB /* DetailCharactersProviderMock.swift */; };
 		B4F61A8D262DDAE2008AD8B0 /* CustomRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4F61A8C262DDAE2008AD8B0 /* CustomRequest.swift */; };
 		B4F61A90262DDDA0008AD8B0 /* NativeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4F61A8F262DDDA0008AD8B0 /* NativeManager.swift */; };
 		B4F61A93262DDDB5008AD8B0 /* BaseProviderUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4F61A92262DDDB5008AD8B0 /* BaseProviderUtils.swift */; };
@@ -116,6 +123,13 @@
 		B4699155262EC7E3000024CB /* BaseTableProtocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTableProtocols.swift; sourceTree = "<group>"; };
 		B4699161262ECC65000024CB /* ComicsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicsViewModel.swift; sourceTree = "<group>"; };
 		B4699165262ECD40000024CB /* ComicsViewCellDrawer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicsViewCellDrawer.swift; sourceTree = "<group>"; };
+		B4699169262EDD93000024CB /* ListCharactersPresenterTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListCharactersPresenterTest.swift; sourceTree = "<group>"; };
+		B469916A262EDD94000024CB /* ListCharactersCVTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListCharactersCVTest.swift; sourceTree = "<group>"; };
+		B4699170262EDDAE000024CB /* ListPresenterMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListPresenterMock.swift; sourceTree = "<group>"; };
+		B4699171262EDDAE000024CB /* ListComicsPresenterMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListComicsPresenterMock.swift; sourceTree = "<group>"; };
+		B4699172262EDDAE000024CB /* ListCharactersProviderMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListCharactersProviderMock.swift; sourceTree = "<group>"; };
+		B469917A262EE4F5000024CB /* DetailCharacterPresenterTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCharacterPresenterTest.swift; sourceTree = "<group>"; };
+		B469917E262EE687000024CB /* DetailCharactersProviderMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCharactersProviderMock.swift; sourceTree = "<group>"; };
 		B4F61A8C262DDAE2008AD8B0 /* CustomRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomRequest.swift; sourceTree = "<group>"; };
 		B4F61A8F262DDDA0008AD8B0 /* NativeManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NativeManager.swift; sourceTree = "<group>"; };
 		B4F61A92262DDDB5008AD8B0 /* BaseProviderUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseProviderUtils.swift; sourceTree = "<group>"; };
@@ -330,10 +344,25 @@
 		B4699147262EC7BE000024CB /* PruebaMarvelTests */ = {
 			isa = PBXGroup;
 			children = (
+				B469916F262EDDAE000024CB /* Mocks */,
+				B469916A262EDD94000024CB /* ListCharactersCVTest.swift */,
+				B4699169262EDD93000024CB /* ListCharactersPresenterTest.swift */,
+				B469917A262EE4F5000024CB /* DetailCharacterPresenterTest.swift */,
 				B4699148262EC7BE000024CB /* PruebaMarvelTests.swift */,
 				B469914A262EC7BE000024CB /* Info.plist */,
 			);
 			path = PruebaMarvelTests;
+			sourceTree = "<group>";
+		};
+		B469916F262EDDAE000024CB /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				B4699170262EDDAE000024CB /* ListPresenterMock.swift */,
+				B4699171262EDDAE000024CB /* ListComicsPresenterMock.swift */,
+				B4699172262EDDAE000024CB /* ListCharactersProviderMock.swift */,
+				B469917E262EE687000024CB /* DetailCharactersProviderMock.swift */,
+			);
+			path = Mocks;
 			sourceTree = "<group>";
 		};
 		B4F61A7E262DD8EB008AD8B0 /* Services */ = {
@@ -593,7 +622,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B4699173262EDDAE000024CB /* ListPresenterMock.swift in Sources */,
+				B469917F262EE687000024CB /* DetailCharactersProviderMock.swift in Sources */,
+				B469916B262EDD94000024CB /* ListCharactersPresenterTest.swift in Sources */,
+				B4699175262EDDAE000024CB /* ListCharactersProviderMock.swift in Sources */,
+				B469916C262EDD94000024CB /* ListCharactersCVTest.swift in Sources */,
+				B469917B262EE4F5000024CB /* DetailCharacterPresenterTest.swift in Sources */,
 				B4699149262EC7BE000024CB /* PruebaMarvelTests.swift in Sources */,
+				B4699174262EDDAE000024CB /* ListComicsPresenterMock.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
